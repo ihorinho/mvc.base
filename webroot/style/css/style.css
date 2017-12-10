@@ -1,0 +1,67 @@
+html{
+    margin: 10px 50px 0;
+}
+ul li.float-right{
+    float: right;
+}
+
+form > div{
+    max-width: 400px;
+}
+
+.col-md-3 > .thumbnail > .show-all{
+    height: 210px !important;
+    width: auto;
+}
+
+/*Admin book editing form*/
+.edit-form> .book-title{
+    margin-top: 0px;
+}
+
+.edit-form img{
+    margin-bottom: 15px;
+}
+
+.edit-form p{
+    font-size: 16px;
+}
+.edit-form p::first-letter{
+    font-weight: bold;
+}
+.edit-form > .form-group > select.author{
+    height: 300px;
+}
+/*---------------------------------*/
+/* Admin books table*/
+.table-responsive .table{
+    max-width: 750px !important;
+    margin: auto;
+}
+
+.book-description{
+    display: none;
+    position: absolute;
+    width: 350px;
+
+}
+/*---------------------------------*/
+/* Captcha field styles*/
+.captcha-group::after{
+    display: block;
+    content: '';
+    clear: both;
+}
+.captcha-input{
+    float: left;
+    width: 50%;
+}
+.captcha-img{
+    float: right;
+    margin: 10px 10px 0;
+}
+/*--------------------------------*/
+
+div.caption h3{
+    margin-top: 10px !important;
+}

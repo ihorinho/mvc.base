@@ -1,0 +1,6 @@
+webroot/upload/*
+.idea/*
+vendor/*
+log/*
+adminer.php
+*/.DS_Store

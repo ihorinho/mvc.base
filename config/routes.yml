@@ -1,0 +1,86 @@
+routes:
+  home:
+    pattern: '/home/?'
+    controller: 'SiteController'
+    action: 'indexAction'
+  home_alt:
+    pattern: '/?'
+    controller: 'SiteController'
+    action: 'indexAction'
+  contact-us:
+    pattern: '/contact-us/?'
+    controller: SiteController
+    action: contactAction
+  login:
+    pattern: /login/?
+    controller: SecurityController
+    action: loginAction
+  register:
+    pattern: /register/?
+    controller: SecurityController
+    action: registerAction
+  register_confirmation:
+    pattern: /confirm/?
+    controller: SecurityController
+    action: confirmAction
+  book-test-route:
+    pattern: /this-is-{test}-{id}-{pat}
+    controller: TestController
+    action: testAction
+    params:
+      id: ([1-9]{1}[0-9]*)
+      test: ([a-zA-Z]+)
+      pat: ([\+\-\*\/]+)
+  logout:
+    pattern: /logout/?
+    controller: SecurityController
+    action: logoutAction
+
+#  Admin routes
+
+  admin_index:
+    pattern: /admin/index/?
+    controller: Admin\SiteController
+    action: indexAction
+  change_password:
+    pattern: /admin/change-pw
+    controller: Admin\SecurityController
+    action: changeAction
+
+#    API routes
+  # api_book_list:
+  #   pattern: /api/books/?
+  #   controller: API\BookController
+  #   action: indexAction
+  #   methods:
+  #           0: get
+  # api_book_item:
+  #   pattern: /api/books/{id}/?
+  #   controller: API\BookController
+  #   action: showAction
+  #   params:
+  #     id: ([1-9]{1}[0-9]*)
+  #   methods:
+  #           0: get
+  # api_book_create:
+  #   pattern: /api/books/?
+  #   controller: API\BookController
+  #   action: addAction
+  #   methods:
+  #           0: post
+  # api_book_delete:
+  #   pattern: /api/books/{id}/?
+  #   controller: API\BookController
+  #   action: deleteAction
+  #   params:
+  #     id: ([1-9]{1}[0-9]*)
+  #   methods:
+  #           0: delete
+  # api_book_update:
+  #     pattern: /api/books/{id}/?
+  #     controller: API\BookController
+  #     action: updateAction
+  #     params:
+  #       id: ([1-9]{1}[0-9]*)
+  #     methods:
+  #       0: put
