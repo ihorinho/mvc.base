@@ -4,3 +4,4 @@ vendor/*
 log/*
 adminer.php
 */.DS_Store
+\.DS_Store

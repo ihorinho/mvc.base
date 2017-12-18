@@ -1,14 +1,14 @@
 routes:
   home:
-    pattern: '/home/?'
-    controller: 'SiteController'
-    action: 'indexAction'
+    pattern: /home/?
+    controller: SiteController
+    action: indexAction
   home_alt:
-    pattern: '/?'
-    controller: 'SiteController'
-    action: 'indexAction'
+    pattern: /?
+    controller: SiteController
+    action: indexAction
   contact-us:
-    pattern: '/contact-us/?'
+    pattern: /contact-us/?
     controller: SiteController
     action: contactAction
   login:
