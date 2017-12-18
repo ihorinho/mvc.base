@@ -2,13 +2,26 @@
 
 namespace Model;
 
+/**
+ * Class User
+ * @package Model
+ */
 class User{
 
+    /**
+     * @var
+     */
     private $id;
 
-	private $email;
+    /**
+     * @var
+     */
+    private $email;
 
-	private $password;
+    /**
+     * @var
+     */
+    private $password;
 
     /**
      * @param mixed $id
@@ -20,29 +33,46 @@ class User{
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
     public function getId()
     {
         return $this->id;
     }
 
+    /**
+     * @param $email
+     * @return $this
+     */
     public function setEmail($email){
 		$this->email = $email;
 
 		return $this;
 	}
 
-	public function getEmail(){
+    /**
+     * @return mixed
+     */
+    public function getEmail(){
 
 		return $this->email;
 	}
 
-	public function setPassword($password){
+    /**
+     * @param $password
+     * @return $this
+     */
+    public function setPassword($password){
 		$this->password = $password;
 
 		return $this;
 	}
 
-	public function getPassword(){
+    /**
+     * @return mixed
+     */
+    public function getPassword(){
 
 		return $this->password;
 	}

@@ -4,8 +4,15 @@ namespace Model\Repository;
 
 use Library\EntityRepository;
 
+/**
+ * Class FeedbackRepository
+ * @package Model\Repository
+ */
 class FeedbackRepository extends EntityRepository
 {
+    /**
+     * @param $feedback
+     */
     public function save($feedback)
     {
         $sql = "INSERT INTO feedback(username, email, message, ip_address)

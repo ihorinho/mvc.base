@@ -2,13 +2,27 @@
 
 namespace Library;
 
+/**
+ * Class DbConnection
+ * @package Library
+ */
 class DbConnection
 {
 
+    /**
+     * @var null
+     */
     private static $instance = null;
 
+    /**
+     * @var \PDO
+     */
     private $pdo;
 
+    /**
+     * DbConnection constructor.
+     * @param $config
+     */
     public function __construct($config)
     {
 
@@ -19,6 +33,9 @@ class DbConnection
         $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
     }
 
+    /**
+     * @return DbConnection|null
+     */
     public static function getInstance()
     {
         if (self::$instance === null) {
@@ -27,11 +44,21 @@ class DbConnection
         return self::$instance;
     }
 
+    /**
+     * @return \PDO
+     */
     public function getPDO()
     {
         return $this->pdo;
     }
 
+    /**
+     *
+     */
     private function __clone(){}
+
+    /**
+     *
+     */
     private function __wakeup(){}
 }

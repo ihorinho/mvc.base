@@ -7,16 +7,43 @@
  */
 namespace Model;
 
+/**
+ * Class UploadedFile
+ * @package Model
+ */
 class UploadedFile
 {
 
+    /**
+     * @var
+     */
     private $file;
+    /**
+     * @var mixed
+     */
     private $name;
+    /**
+     * @var mixed
+     */
     private $tmpName;
+    /**
+     * @var mixed
+     */
     private $type;
+    /**
+     * @var mixed
+     */
     private $error;
+    /**
+     * @var mixed
+     */
     private $size;
 
+    /**
+     * UploadedFile constructor.
+     * @param $filename
+     * @throws \Exception
+     */
     public function __construct($filename)
     {
         if(!isset($_FILES[$filename])){
@@ -30,12 +57,18 @@ class UploadedFile
         $this->error = $this->getFile('error');
     }
 
+    /**
+     * @return bool
+     */
     public function isJPG()
     {
         $allowed_types = ['image/jpeg', 'image/pjpeg'];
         return in_array($this->type, $allowed_types);
     }
 
+    /**
+     * @param $name
+     */
     public function moveToUploads($name)
     {
         $destination = UPLOAD_PATH . $name . '.jpg';

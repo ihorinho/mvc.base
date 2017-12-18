@@ -4,11 +4,22 @@ namespace Library;
 
 use \Symfony\Component\Yaml\Yaml;
 
+/**
+ * Class Config
+ * @package Library
+ */
 class Config
 {
 
+    /**
+     * @var array
+     */
     private $config = [];
 
+    /**
+     * Config constructor.
+     * @throws \Exception
+     */
     public function __construct()
     {
         $dir_handler = opendir(CONFIG_PATH);
@@ -38,6 +49,11 @@ class Config
         }
     }
 
+    /**
+     * @param $key
+     * @return mixed
+     * @throws \Exception
+     */
     public function get($key)
     {
         if (!isset($this->config[$key])) {

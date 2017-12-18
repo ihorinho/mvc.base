@@ -4,8 +4,17 @@ namespace Library\API;
 
 use Library\OutputFormatterInterface;
 
+/**
+ * Class HtmlFormatter
+ * @package Library\API
+ */
 class HtmlFormatter implements OutputFormatterInterface
 {
+    /**
+     * @param integer $status
+     * @param string $message
+     * @return string
+     */
     public function output($status, $message)
     {
         header('Content-Type: text/html');

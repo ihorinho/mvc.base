@@ -6,15 +6,27 @@ use Library\Request;
 use Model\ContactForm;
 use Model\Feedback;
 
+/**
+ * Class SiteController
+ * @package Controller\Admin
+ */
 class SiteController extends Controller
 {
 
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function indexAction(Request $request)
     {
         $this->isAdmin();
         return $this->render('index.phtml.twig');
     }
 
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function contactAction(Request $request)
     {
         $form = new ContactForm($request);

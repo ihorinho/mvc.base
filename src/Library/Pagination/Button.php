@@ -7,12 +7,31 @@
  */
 namespace Library\Pagination;
 
+/**
+ * Class Button
+ * @package Library\Pagination
+ */
 class Button
 {
+    /**
+     * @var integer
+     */
     private $page;
+    /**
+     * @var null
+     */
     private $text;
+    /**
+     * @var bool
+     */
     private $is_active;
 
+    /**
+     * Button constructor.
+     * @param $page
+     * @param bool $is_active
+     * @param null $text
+     */
     public function __construct($page, $is_active = true, $text = null)
     {
         $this->page = $page;
@@ -28,6 +47,9 @@ class Button
         return $this->page;
     }
 
+    /**
+     * @return null
+     */
     public function getText(){
         return $this->text;
     }

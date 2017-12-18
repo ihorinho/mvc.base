@@ -2,11 +2,23 @@
 
 namespace Library;
 
+/**
+ * Class Container
+ * @package Library
+ */
 class Container
 {
 
+    /**
+     * @var array
+     */
     private $services = [];
 
+    /**
+     * @param string|integer $key
+     * @return mixed
+     * @throws \Exception
+     */
     public function get($key)
     {
         if(!isset($this->services[$key]))
@@ -14,6 +26,11 @@ class Container
         return $this->services[$key];
     }
 
+    /**
+     * @param string|integer $key
+     * @param $entity
+     * @return $this
+     */
     public function set($key, $entity)
     {
         $this->services[$key] = $entity;

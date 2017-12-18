@@ -7,8 +7,14 @@
  */
 
 namespace Model\Fo
+/**
+ * Class Captcha
+ * @package Model\Fo
+ */
 class Captcha
-function captcha(){
+/**
+ *
+ */function captcha(){
 
 //    $securityNumber = (string)$_SESSION['captcha'];
 

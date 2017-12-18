@@ -4,8 +4,17 @@ namespace Library\API;
 
 use Library\OutputFormatterInterface;
 
+/**
+ * Class XmlFormatter
+ * @package Library\API
+ */
 class XmlFormatter implements OutputFormatterInterface
 {
+    /**
+     * @param integer $status
+     * @param string $message
+     * @return mixed
+     */
     public function output($status, $message)
     {
         header('Content-Type: text/xml');

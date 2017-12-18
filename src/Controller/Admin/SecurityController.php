@@ -6,13 +6,22 @@
  * Time: 10:23 PM
  */
 namespace Controller\Admin;
+
 use Library\Controller;
 use Library\Request;
-use Model\Forms\ChangePasswordForm;
 use Library\Password;
+use Model\Forms\ChangePasswordForm;
 
+/**
+ * Class SecurityController
+ * @package Controller\Admin
+ */
 class SecurityController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function changeAction(Request $request)
     {
         if (!$this->isAdmin()) {

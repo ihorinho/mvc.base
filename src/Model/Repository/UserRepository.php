@@ -5,8 +5,18 @@ namespace Model\Repository;
 use Library\EntityRepository;
 use Model\User;
 
+/**
+ * Class UserRepository
+ * @package Model\Repository
+ */
 class UserRepository extends EntityRepository
 {
+    /**
+     * @param $email
+     * @param $password
+     * @param $is_active
+     * @return $this|bool
+     */
     public function find($email, $password, $is_active)
     {
         $sql = "SELECT * FROM user WHERE email = :email AND password = :password AND is_active = :is_active";
@@ -25,6 +35,11 @@ class UserRepository extends EntityRepository
         return $user;
     }
 
+    /**
+     * @param $id
+     * @param $password
+     * @return mixed
+     */
     public function save($id, $password)
     {
         $sql = "UPDATE user
@@ -34,6 +49,12 @@ class UserRepository extends EntityRepository
         return $sth->execute(['password' => $password]);
     }
 
+    /**
+     * @param $email
+     * @param $password
+     * @param $code
+     * @return mixed
+     */
     public function addNew($email, $password, $code)
     {
         $sql = "INSERT INTO user
@@ -42,6 +63,10 @@ class UserRepository extends EntityRepository
         return $sth->execute(['email' => $email, 'password' => $password, 'code' => $code]);
     }
 
+    /**
+     * @param $email
+     * @return int
+     */
     public function userExists($email)
     {
         $sql = "SELECT count(*)
@@ -54,6 +79,11 @@ class UserRepository extends EntityRepository
        return (int)$result;
     }
 
+    /**
+     * @param $user
+     * @param $code
+     * @return mixed
+     */
     public function activate($user, $code)
     {
         $sql = "UPDATE user

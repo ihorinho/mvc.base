@@ -5,14 +5,30 @@ namespace Library;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 
+/**
+ * Class App
+ * @package Library
+ */
 abstract class App
 {
+    /**
+     * @var bool
+     */
     public static $applicationIsRun = false;
 
+    /**
+     * @var Logger $logger
+     */
     private static $logger;
 
+    /**
+     * @var Container $container
+     */
     private static $container;
 
+    /**
+     * @param Config $config
+     */
     public static function run(Config $config)
     {
         try {
@@ -68,11 +84,19 @@ abstract class App
         echo $content;
     }
 
+    /**
+     * @param string $message
+     * @param array $vars
+     */
     public static function warning($message = 'Warning: ', array $vars = [])
     {
         self::$logger->addWarning($message, $vars);
     }
 
+    /**
+     * @param $key
+     * @return mixed
+     */
     public static function get($key)
     {
         return self::$container ->get($key);

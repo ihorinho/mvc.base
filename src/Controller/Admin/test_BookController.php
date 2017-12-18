@@ -9,10 +9,18 @@ use Model\Forms\BookAddForm;
 use Model\Forms\BookEditForm;
 use Model\UploadedFile;
 
+/**
+ * Class BookController
+ * @package Controller\Admin
+ */
 class BookController extends Controller
 {
     const BOOK_COVER_FILE = 'book_cover';
 
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function indexAction(Request $request)
     {
         $this->isAdmin();
@@ -31,6 +39,10 @@ class BookController extends Controller
         return $this->render('index.phtml.twig',$args);
     }
 
+    /**
+     * @param Request $request
+     * @return string
+     */
     public function editAction(Request $request)
     {
         $this->isAdmin();

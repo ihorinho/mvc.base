@@ -7,12 +7,31 @@
  */
 namespace Library\Pagination;
 
+/**
+ * Class Pagination
+ * @package Library\Pagination
+ */
 class Pagination
 {
+    /**
+     * @var array
+     */
     private $buttons = array();
+    /**
+     * @var Button
+     */
     private $next;
+    /**
+     * @var Button
+     */
     private $previous;
 
+    /**
+     * Pagination constructor.
+     * @param $currentPage
+     * @param $itemsCount
+     * @param $itemsPerPage
+     */
     public function __construct($currentPage, $itemsCount, $itemsPerPage)
     {
         $pagesCount = ceil($itemsCount/$itemsPerPage);
@@ -24,15 +43,24 @@ class Pagination
         $this->next = new Button($pagesCount, $currentPage < $pagesCount, 'Next');
     }
 
+    /**
+     * @return array
+     */
     public function getButtons()
     {
         return $this->buttons;
     }
 
+    /**
+     * @return Button
+     */
     public function getPrev(){
         return $this->previous;
     }
 
+    /**
+     * @return Button
+     */
     public function getNext(){
         return $this->next;
     }

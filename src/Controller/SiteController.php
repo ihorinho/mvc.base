@@ -7,13 +7,25 @@ use Model\Forms\ContactForm;
 use Model\Feedback;
 use Gregwar\Captcha\CaptchaBuilder;
 
+/**
+ * Class SiteController
+ * @package Controller
+ */
 class SiteController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function indexAction(Request $request)
     {
         return $this->render('index.phtml.twig');
     }
 
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function contactAction(Request $request)
     {
         $builder = new CaptchaBuilder;

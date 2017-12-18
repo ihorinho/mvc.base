@@ -2,18 +2,38 @@
 namespace Model\Forms;
 use Library\Request;
 
+/**
+ * Class ChangePasswordForm
+ * @package Model\Forms
+ */
 class ChangePasswordForm{
-	private $old_passw = '';
-	private $new_passw = '';
-	private $repeated_new_passw = '';
+    /**
+     * @var string
+     */
+    private $old_passw = '';
+    /**
+     * @var string
+     */
+    private $new_passw = '';
+    /**
+     * @var string
+     */
+    private $repeated_new_passw = '';
 
-	public function __construct(Request $request){
+    /**
+     * ChangePasswordForm constructor.
+     * @param Request $request
+     */
+    public function __construct(Request $request){
 		$this->old_passw = clearString($request->post('old_passw'));
 		$this->new_passw = clearString($request->post('new_passw'));
 		$this->repeated_new_passw = clearString($request->post('repeated_new_passw'));
 	}
 
-	public function isValid(){
+    /**
+     * @return bool
+     */
+    public function isValid(){
 		return $this->old_passw !== '' &&
 				$this->new_passw !== '' &&
                 $this->repeated_new_passw !== '';
@@ -35,6 +55,9 @@ class ChangePasswordForm{
         return $this->repeated_new_passw;
     }
 
+    /**
+     * @return bool
+     */
     public function matchPasswords(){
         return $this->new_passw === $this->repeated_new_passw;
     }

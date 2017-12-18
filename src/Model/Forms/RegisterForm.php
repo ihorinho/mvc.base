@@ -3,13 +3,32 @@ namespace Model\Forms;
 use Library\Request;
 
 class RegisterForm{
-	private $email = '';
-	private $password = '';
+    /**
+     * @var null|string
+     */
+    private $email = '';
+    /**
+     * @var null|string
+     */
+    private $password = '';
+    /**
+     * @var null|string
+     */
     private $repeatedPassword = '';
-	private $remember = '';
+    /**
+     * @var null|string
+     */
+    private $remember = '';
+    /**
+     * @var null
+     */
     private $phrase;
 
-	public function __construct(Request $request){
+    /**
+     * RegisterForm constructor.
+     * @param Request $request
+     */
+    public function __construct(Request $request){
 		$this->email = $request->post('email');
 		$this->password = $request->post('password');
 		$this->remember = $request->post('remember');
@@ -17,7 +36,10 @@ class RegisterForm{
         $this->phrase = $request->post('phrase');
     }
 
-	public function isValid(){
+    /**
+     * @return bool
+     */
+    public function isValid(){
 		return $this->email !== '' &&
 				$this->password !== '' &&
 				$this->repeatedPassword !== '' &&
@@ -31,24 +53,39 @@ class RegisterForm{
     {
         return $this->repeatedPassword;
     }
-	
-	public function getEmail(){
+
+    /**
+     * @return null|string
+     */
+    public function getEmail(){
 		return $this->email;
 	}
 
-	public function getPassword(){
+    /**
+     * @return null|string
+     */
+    public function getPassword(){
 		return $this->password;
 	}
 
+    /**
+     * @return null
+     */
     public function getPhrase()
     {
         return $this->phrase;
     }
 
-	public function rememberUser(){
+    /**
+     * @return bool
+     */
+    public function rememberUser(){
 		return $this->remember == 'on';
 	}
 
+    /**
+     * @return bool
+     */
     public function passwordsMatch(){
         return $this->password === $this->repeatedPassword;
     }

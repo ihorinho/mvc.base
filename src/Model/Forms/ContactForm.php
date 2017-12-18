@@ -2,29 +2,60 @@
 namespace Model\Forms;
 use Library\Request;
 
+/**
+ * Class ContactForm
+ * @package Model\Forms
+ */
 class ContactForm{
-	private $username = '';
-	private $email = '';
-	private $message = '';
+    /**
+     * @var null|string
+     */
+    private $username = '';
+    /**
+     * @var null|string
+     */
+    private $email = '';
+    /**
+     * @var null|string
+     */
+    private $message = '';
+    /**
+     * @var null
+     */
     private $phrase;
 
-	public function __construct(Request $request){
+    /**
+     * ContactForm constructor.
+     * @param Request $request
+     */
+    public function __construct(Request $request){
 		$this->username = $request->post('username');
 		$this->email = $request->post('email');
 		$this->message = $request->post('message');
 		$this->phrase = $request->post('phrase');
 	}
 
-	public function isValid(){
+    /**
+     * @return bool
+     */
+    public function isValid(){
 		return $this->username !== '' &&
 				$this->email !== ''&&
 				$this->message !== '' &&
 				$this->phrase !== '';
 	}
-	public function getUsername(){
+
+    /**
+     * @return null|string
+     */
+    public function getUsername(){
 		return $this->username;
 	}
-	public function getEmail(){
+
+    /**
+     * @return null|string
+     */
+    public function getEmail(){
 		return $this->email;
 	}
 
@@ -35,7 +66,11 @@ class ContactForm{
     {
         return $this->phrase;
     }
-	public function getMessage(){
+
+    /**
+     * @return null|string
+     */
+    public function getMessage(){
 		return $this->message;
 	}
 }

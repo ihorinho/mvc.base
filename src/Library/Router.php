@@ -4,13 +4,33 @@ namespace Library;
 
 use Library\Exception\ApiException;
 
+/**
+ * Class Router
+ * @package Library
+ */
 class Router
 {
+    /**
+     * @var
+     */
     private $routes;
+    /**
+     * @var
+     */
     private $allowedMethods;
+    /**
+     * @var bool
+     */
     private $apiRequest = false;
+    /**
+     * @var
+     */
     private $CurrentRoute;
 
+    /**
+     * Router constructor.
+     * @param $config
+     */
     public function __construct($config)
     {
         $this->allowedMethods = $config->get('api_methods');
@@ -23,11 +43,20 @@ class Router
         }
     }
 
+    /**
+     * @return mixed
+     */
     public function getCurrentRoute()
     {
         return $this->CurrentRoute;
     }
 
+    /**
+     * @param Request $request
+     * @return $this
+     * @throws ApiException
+     * @throws \Exception
+     */
     public function match(Request $request)
     {
         $path_parts = explode('?', $request->getUri());
@@ -71,6 +100,11 @@ class Router
         return $this;
     }
 
+    /**
+     * @param $method
+     * @param $pattern
+     * @return bool
+     */
     public function isAllowedMethod($method, $pattern)
     {
        if (!in_array($method, $this->allowedMethods[$pattern]) )
@@ -78,6 +112,9 @@ class Router
        return true;
     }
 
+    /**
+     * @param $to
+     */
     public function redirect($to)
     {
         header("Location: {$to}");

@@ -7,8 +7,16 @@ use Model\Forms\RegisterForm;
 use Library\Password;
 use Gregwar\Captcha\CaptchaBuilder;
 
+/**
+ * Class SecurityController
+ * @package Controller
+ */
 class SecurityController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function loginAction(Request $request)
     {
         $loginForm = new LoginForm($request);
@@ -33,6 +41,9 @@ class SecurityController extends Controller
         return $this->render('login.phtml.twig', $args = ['loginForm' => $loginForm]);
     }
 
+    /**
+     * @param Request $request
+     */
     public function logoutAction(Request $request)
     {
         $session = $this->getSession();
@@ -41,6 +52,11 @@ class SecurityController extends Controller
         $this->redirect('/home');
     }
 
+    /**
+     * @param Request $request
+     * @return mixed
+     * @throws \Exception
+     */
     public function registerAction(Request $request)
     {
         $builder = new CaptchaBuilder;
@@ -94,6 +110,9 @@ class SecurityController extends Controller
         return $this->render('register.phtml.twig', $args);
     }
 
+    /**
+     * @param Request $request
+     */
     public function confirmAction(Request $request)
     {
         $session = $this->getSession();

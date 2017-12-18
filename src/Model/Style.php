@@ -2,9 +2,19 @@
 
 namespace Model;
 
+/**
+ * Class Style
+ * @package Model
+ */
 class Style{
-	private $id;
-	private $name;
+    /**
+     * @var
+     */
+    private $id;
+    /**
+     * @var
+     */
+    private $name;
 
 	/**
      * @param mixed $id

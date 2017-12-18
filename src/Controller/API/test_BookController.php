@@ -6,6 +6,10 @@ use Library\Request;
 use Library\Response;
 use Model\Book;
 
+/**
+ * Class BookController
+ * @package Controller\API
+ */
 class BookController extends Controller
 {
     //GET books: curl http://host/api/books
@@ -16,6 +20,10 @@ class BookController extends Controller
     //DELETE book: curl -X DELETE mymvc/api/books/5
     //ADD new Book: curl -X POST -d json='{"title":"New book","price":555,"description":"This book was added with api","is_active":1,"authors":[5,7,9],"style_id":5}' http://host/api/books/
 
+    /**
+     * @param Request $request
+     * @return Response
+     */
     public function indexAction(Request $request)
     {
         $outputFormatter = $this->getOutputFormatter($request);
@@ -29,6 +37,10 @@ class BookController extends Controller
         return new Response(200, $books, $outputFormatter);
     }
 
+    /**
+     * @param Request $request
+     * @return Response
+     */
     public function showAction(Request $request)
     {
         $outputFormatter = $this->getOutputFormatter($request);
@@ -48,6 +60,10 @@ class BookController extends Controller
         return new Response(200, $response, $outputFormatter);
     }
 
+    /**
+     * @param Request $request
+     * @return Response
+     */
     public function addAction(Request $request)
     {
         $outputFormatter = $this->getOutputFormatter($request);
@@ -85,6 +101,10 @@ class BookController extends Controller
         return new Response(200, 'New book added', $outputFormatter);
     }
 
+    /**
+     * @param Request $request
+     * @return Response
+     */
     public function deleteAction(Request $request)
     {
         $outputFormatter = $this->getOutputFormatter($request);
@@ -104,6 +124,10 @@ class BookController extends Controller
         return new Response(200, 'Book successfully deleted', $outputFormatter);
     }
 
+    /**
+     * @param Request $request
+     * @return Response
+     */
     public function updateAction(Request $request)
     {
         $outputFormatter = $this->getOutputFormatter($request);

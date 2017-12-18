@@ -3,14 +3,30 @@ namespace Library;
 
 use Library\API\FormatterFactory;
 
+/**
+ * Class Controller
+ * @package Library
+ */
 class Controller
 {
     const PER_PAGE = 12;
 
+    /**
+     * @var string
+     */
     protected static $layout = 'default_layout.phtml';
 
+    /**
+     * @var string
+     */
     protected $errorTemplate = 'error.phtml.twig';
 
+    /**
+     * @param $view
+     * @param array $args
+     * @return mixed
+     * @throws \Exception
+     */
     protected function render($view, $args = [])
     {
         extract($args);
@@ -26,6 +42,12 @@ class Controller
         return $twig->render($tpl_name, $args);
     }
 
+    /**
+     * @param $message
+     * @param $file
+     * @param $line
+     * @return mixed
+     */
     public function renderError($message, $file, $line){
         $twig = Registry::get('twig');
         // $session = App::$applicationIsRun ? $this->getSession() : null;
@@ -42,15 +64,25 @@ class Controller
     }
 
 
+    /**
+     * @param $container
+     * @return $this
+     */
     public function setContainer($container){
         $this->container = $container;
         return $this;
     }
 
+    /**
+     * @param $layout
+     */
     public static function setLayout($layout){
         self::$layout = $layout;
     }
 
+    /**
+     * @return bool
+     */
     protected function isAdmin(){
         $session = $this->getSession();
         if (!$session->has('user')) {
@@ -63,19 +95,34 @@ class Controller
         return true;
     }
 
+    /**
+     * @return mixed
+     */
     public function getSession(){
         return $this->container->get('request')->getSession();
     }
 
+    /**
+     * @param $message
+     * @param array $args1
+     * @param array $args2
+     */
     public function saveLog($message, $args1=[0], $args2=[0]){
         $this->container->get('logger')->addInfo($message, $args1, $args2);
     }
 
+    /**
+     * @param $to
+     */
     public function redirect($to){
         $router = $this->container->get('router');
         $router->redirect($to);
     }
 
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function getOutputFormatter(Request $request){
         $default_format = $this->container->get('config')->get('default_api_format');
         $format = $request->get('format', $default_format);
